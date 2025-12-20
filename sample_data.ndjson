@@ -1,0 +1,9 @@
+{"_id":"cat1","_type":"category","title":"Tshirts","slug":{"_type":"slug","current":"tshirts"},"description":"Casual and comfortable t-shirts.","image":null}
+{"_id":"cat2","_type":"category","title":"Jackets","slug":{"_type":"slug","current":"jackets"},"description":"Stylish jackets for winter.","image":null}
+
+{"_id":"prod1","_type":"product","name":"Basic White Tshirt","slug":{"_type":"slug","current":"basic-white-tshirt"},"images":null,"intro":"Comfortable cotton t-shirt","description":"100% cotton, available in all sizes","price":20,"discount":5,"categories":[{"_type":"reference","_ref":"cat1"}],"stock":100,"status":"new","variant":"tshirt"}
+{"_id":"prod2","_type":"product","name":"Winter Jacket","slug":{"_type":"slug","current":"winter-jacket"},"images":null,"intro":"Warm and stylish jacket","description":"Perfect for winter season","price":80,"discount":10,"categories":[{"_type":"reference","_ref":"cat2"}],"stock":50,"status":"hot","variant":"jacket"}
+
+{"_id":"order1","_type":"order","orderNumber":"ORD001","customerName":"Faisal Mujtaba","email":"faisal@example.com","products":[{"_key":"item1","quantity":2,"product":{"_ref":"prod1","_type":"reference"}}],"totalPrice":40,"currency":"USD","status":"paid","orderDate":"2025-12-18T10:00:00Z"}
+
+{"_id":"sale1","_type":"sale","title":"Winter Sale","description":"Up to 20% off on jackets","badge":"Hot","discountAmount":20,"couponCode":"WINTER20","validFrom":"2025-12-01T00:00:00Z","validUntil":"2025-12-31T23:59:59Z","isActive":true,"image":null}

@@ -1,0 +1,23 @@
+[
+    {
+        "_id": "order1",
+        "_type": "order",
+        "orderNumber": "ORD001",
+        "customerName": "Faisal Mujtaba",
+        "email": "faisal@example.com",
+        "products": [
+            {
+                "_key": "item1",
+                "quantity": 2,
+                "product": {
+                    "_ref": "prod1",
+                    "_type": "reference"
+                }
+            }
+        ],
+        "totalPrice": 40,
+        "currency": "USD",
+        "status": "paid",
+        "orderDate": "2025-12-18T10:00:00Z"
+    }
+]

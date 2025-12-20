@@ -1,0 +1,68 @@
+[
+    {
+        "_id": "prod1",
+        "_type": "product",
+        "name": "Basic White Tshirt",
+        "slug": {
+            "_type": "slug",
+            "current": "basic-white-tshirt"
+        },
+        "images": [
+            {
+                "_key": "img1",
+                "_type": "image",
+                "asset": {
+                    "_ref": "image1",
+                    "_type": "reference"
+                }
+            }
+        ],
+        "intro": "Comfortable cotton t-shirt",
+        "description": "100% cotton, available in all sizes",
+        "price": 20,
+        "discount": 5,
+        "categories": [
+            {
+                "_key": "cat1",
+                "_type": "reference",
+                "_ref": "cat1"
+            }
+        ],
+        "stock": 100,
+        "status": "new",
+        "variant": "tshirt"
+    },
+    {
+        "_id": "prod2",
+        "_type": "product",
+        "name": "Winter Jacket",
+        "slug": {
+            "_type": "slug",
+            "current": "winter-jacket"
+        },
+        "images": [
+            {
+                "_key": "img2",
+                "_type": "image",
+                "asset": {
+                    "_ref": "image2",
+                    "_type": "reference"
+                }
+            }
+        ],
+        "intro": "Warm and stylish jacket",
+        "description": "Perfect for winter season",
+        "price": 80,
+        "discount": 10,
+        "categories": [
+            {
+                "_key": "cat2",
+                "_type": "reference",
+                "_ref": "cat2"
+            }
+        ],
+        "stock": 50,
+        "status": "hot",
+        "variant": "jacket"
+    }
+]

@@ -69,8 +69,16 @@ const CartPage = () => {
       if (checkoutUrl) {
         window.location.href = checkoutUrl;
       }
-    } catch (error) {
+    } catch (error: any) {
       console.error("Error creating checkout session:", error);
+      const msg = error?.message || String(error);
+      if (typeof msg === "string" && msg.includes("STRIPE_NOT_CONFIGURED")) {
+        toast.error(
+          "Online payments are currently unavailable. Please try again later."
+        );
+      } else {
+        toast.error("Failed to create checkout session. Please try again.");
+      }
     } finally {
       setLoading(false);
     }

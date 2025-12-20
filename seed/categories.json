@@ -1,0 +1,36 @@
+[
+    {
+        "_id": "cat1",
+        "_type": "category",
+        "title": "Tshirts",
+        "slug": {
+            "_type": "slug",
+            "current": "tshirts"
+        },
+        "description": "Casual and comfortable t-shirts.",
+        "image": {
+            "asset": {
+                "_ref": "image1",
+                "_type": "reference"
+            },
+            "_type": "image"
+        }
+    },
+    {
+        "_id": "cat2",
+        "_type": "category",
+        "title": "Jackets",
+        "slug": {
+            "_type": "slug",
+            "current": "jackets"
+        },
+        "description": "Stylish jackets for winter.",
+        "image": {
+            "asset": {
+                "_ref": "image2",
+                "_type": "reference"
+            },
+            "_type": "image"
+        }
+    }
+]

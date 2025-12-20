@@ -1,0 +1,21 @@
+[
+    {
+        "_id": "sale1",
+        "_type": "sale",
+        "title": "Winter Sale",
+        "description": "Up to 20% off on jackets",
+        "badge": "Hot",
+        "discountAmount": 20,
+        "couponCode": "WINTER20",
+        "validFrom": "2025-12-01T00:00:00Z",
+        "validUntil": "2025-12-31T23:59:59Z",
+        "isActive": true,
+        "image": {
+            "_type": "image",
+            "asset": {
+                "_ref": "image2",
+                "_type": "reference"
+            }
+        }
+    }
+]

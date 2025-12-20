@@ -1,6 +1,6 @@
 "use server";
 
-import stripe from "@/lib/stripe";
+import stripe, { isStripeConfigured } from "@/lib/stripe";
 import Stripe from "stripe";
 import { urlFor } from "@/sanity/lib/image";
 import { CartItem } from "@/store";
@@ -21,6 +21,10 @@ export async function createCheckoutSession(
   items: GroupedCartItems[],
   metadata: Metadata
 ) {
+  if (!isStripeConfigured) {
+    throw new Error("STRIPE_NOT_CONFIGURED: Stripe is not configured on the server");
+  }
+
   try {
     // Validate if any grouped items don't have a price
     const itemsWithoutPrice = items.filter((item) => !item.product.price);
