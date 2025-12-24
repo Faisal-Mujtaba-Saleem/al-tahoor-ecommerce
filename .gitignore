@@ -7,7 +7,8 @@
 .env.development.local
 .env.test.local
 .env.production.local
-*.env*
+*.env
+!.env.example
 # Google Service Account Keys
 *.json
 !package.json

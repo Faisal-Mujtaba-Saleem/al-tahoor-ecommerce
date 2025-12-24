@@ -11,20 +11,16 @@ const isProtectedRoute = createRouteMatcher([
 
 export default clerkMiddleware(async (auth, req) => {
   const { pathname } = req.nextUrl;
-  console.log("Middleware Request:", pathname);
+  const { userId } = await auth();
+  console.log(`[Middleware] Request: ${pathname} | userId: ${userId}`);
 
   if (pathname.startsWith("/api/webhooks/sanity")) {
     return NextResponse.next();
   }
 
-  const authObject = await auth();
-
-  if (isProtectedRoute(req) && !authObject.userId) {
-    const signInUrl = new URL(
-      `/signin?redirect_url=${req.nextUrl.pathname}`,
-      req.url
-    );
-    return NextResponse.redirect(signInUrl);
+  if (isProtectedRoute(req)) {
+    console.log(`[Middleware] Protecting: ${pathname}`);
+    await auth.protect();
   }
 
   return NextResponse.next();

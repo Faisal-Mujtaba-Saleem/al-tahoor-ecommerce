@@ -5,7 +5,7 @@ import Image from "next/image";
 import React, { useEffect, useState } from "react";
 
 // Third-party libraries
-import { useAuth, useUser } from "@clerk/nextjs";
+import { useUser } from "@clerk/nextjs";
 import { Heart, ShoppingBag, Trash } from "lucide-react";
 import toast from "react-hot-toast";
 
@@ -30,6 +30,7 @@ import {
   TooltipTrigger,
 } from "@/components/ui/tooltip";
 import useCartStore from "@/store";
+import useWishlistStore from "@/store/wishlistStore";
 
 interface ExtendedProduct extends Product {
   variant?: string;
@@ -46,13 +47,19 @@ const CartPage = () => {
   const [showCheckout, setShowCheckout] = useState(false);
   const [isClient, setIsClient] = useState(false);
   const groupedItems = useCartStore((state) => state.getGroupedItems());
-  const { isSignedIn } = useAuth();
-  const { user } = useUser();
+  const { isLoaded, isSignedIn, user } = useUser();
+
+  const {
+    addItem: addToWishlist,
+    removeItem: removeFromWishlist,
+    isInWishlist,
+  } = useWishlistStore();
 
   useEffect(() => {
     setIsClient(true);
   }, []);
-  if (!isClient) {
+
+  if (!isClient || !isLoaded) {
     return <Loading />;
   }
 
@@ -71,6 +78,16 @@ const CartPage = () => {
   const handleDeleteProduct = (id: string) => {
     deleteCartProduct(id);
     toast.success("Product deleted successfully!");
+  };
+
+  const handleWishlistToggle = (product: Product) => {
+    if (isInWishlist(product._id)) {
+      removeFromWishlist(product._id);
+      toast.success("Removed from favorites");
+    } else {
+      addToWishlist(product);
+      toast.success("Added to favorites");
+    }
   };
   return (
     <div className="bg-gray-50 pb-52 md:pb-10">
@@ -140,11 +157,22 @@ const CartPage = () => {
                               <div className="flex items-center gap-2">
                                 <TooltipProvider>
                                   <Tooltip>
-                                    <TooltipTrigger>
-                                      <Heart className="w-4 h-4 md:w-5 md:h-5 mr-1 text-gray-500 hover:text-red-600 hoverEffect" />
+                                    <TooltipTrigger
+                                      onClick={() =>
+                                        handleWishlistToggle(product)
+                                      }
+                                    >
+                                      <Heart
+                                        className={`w-4 h-4 md:w-5 md:h-5 mr-1 hoverEffect ${isInWishlist(product._id)
+                                          ? "fill-red-600 text-red-600"
+                                          : "text-gray-500 hover:text-red-600"
+                                          }`}
+                                      />
                                     </TooltipTrigger>
                                     <TooltipContent className="font-bold">
-                                      Add to Favorite
+                                      {isInWishlist(product._id)
+                                        ? "Remove from Favorite"
+                                        : "Add to Favorite"}
                                     </TooltipContent>
                                   </Tooltip>
                                   <Tooltip>

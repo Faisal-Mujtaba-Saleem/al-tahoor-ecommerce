@@ -6,7 +6,7 @@ import React from "react";
 import { ListOrdered } from "lucide-react";
 
 // SDKs (Sanity, Clerk, Google)
-import { auth, currentUser } from "@clerk/nextjs/server";
+import { auth } from "@clerk/nextjs/server";
 
 // Internal absolute imports (@/)
 import { getAllCategories, getMyOrders } from "@/sanity/helpers";
@@ -20,7 +20,6 @@ import UserButtonWrapper from "./UserButtonWrapper";
 import WishlistIcon from "./new/WishlistIcon";
 
 const Header = async () => {
-  await currentUser();
   const { userId } = await auth();
   let orders = null;
   if (userId) {

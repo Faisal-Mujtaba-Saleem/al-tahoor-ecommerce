@@ -15,7 +15,7 @@ const HomeBanner = () => {
         medical and personal care products at unbeatable prices.
       </p>
       <Link
-        href="/#shop"
+        href="/shop"
         className="z-10 bg-white text-primary hover:bg-zinc-100 px-8 py-3 rounded-full font-bold text-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 active:scale-95"
       >
         Shop Now
