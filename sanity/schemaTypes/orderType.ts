@@ -1,3 +1,4 @@
+// Third-party libraries
 import { BasketIcon } from "@sanity/icons";
 import { defineArrayMember, defineField, defineType } from "sanity";
 
@@ -10,26 +11,6 @@ export const orderType = defineType({
     defineField({
       name: "orderNumber",
       title: "Order Number",
-      type: "string",
-      validation: (Rule) => Rule.required(),
-    }),
-    {
-      name: "invoice",
-      type: "object",
-      fields: [
-        { name: "id", type: "string" },
-        { name: "number", type: "string" },
-        { name: "hosted_invoice_url", type: "url" },
-      ],
-    },
-    defineField({
-      name: "stripeCheckoutSessionId",
-      title: "Stripe Checkout Session ID",
-      type: "string",
-    }),
-    defineField({
-      name: "stripeCustomerId",
-      title: "Stripe Customer ID",
       type: "string",
       validation: (Rule) => Rule.required(),
     }),
@@ -52,8 +33,32 @@ export const orderType = defineType({
       validation: (Rule) => Rule.required().email(),
     }),
     defineField({
-      name: "stripePaymentIntentId",
-      title: "Stripe Payment Intent ID",
+      name: "phone",
+      title: "Phone Number",
+      type: "string",
+      validation: (Rule) => Rule.required(),
+    }),
+    defineField({
+      name: "cnic",
+      title: "CNIC",
+      type: "string",
+      validation: (Rule) => Rule.required(),
+    }),
+    defineField({
+      name: "address",
+      title: "Street Address",
+      type: "string",
+      validation: (Rule) => Rule.required(),
+    }),
+    defineField({
+      name: "city",
+      title: "City",
+      type: "string",
+      validation: (Rule) => Rule.required(),
+    }),
+    defineField({
+      name: "postalCode",
+      title: "Postal Code",
       type: "string",
       validation: (Rule) => Rule.required(),
     }),
@@ -75,6 +80,16 @@ export const orderType = defineType({
               name: "quantity",
               title: "Quantity Purchased",
               type: "number",
+            }),
+            defineField({
+              name: "price",
+              title: "Price at Purchase",
+              type: "number",
+            }),
+            defineField({
+              name: "productName",
+              title: "Product Name Snapshot",
+              type: "string",
             }),
           ],
           preview: {
@@ -121,8 +136,8 @@ export const orderType = defineType({
       options: {
         list: [
           {
-            title: "Pending",
-            value: "pending",
+            title: "Placed",
+            value: "placed",
           },
           {
             title: "Paid",
@@ -142,6 +157,7 @@ export const orderType = defineType({
           },
         ],
       },
+      initialValue: "placed",
     }),
     defineField({
       name: "orderDate",

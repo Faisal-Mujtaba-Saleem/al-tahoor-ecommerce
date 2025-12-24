@@ -1,19 +1,26 @@
 "use client";
-import { PRODUCTS_QUERYResult } from "@/sanity.types";
+
+// React & Next.js core
 import React, { useEffect, useState } from "react";
+
+// Third-party libraries
 import { motion, AnimatePresence } from "motion/react";
+
+// SDKs (Sanity, Clerk, Google)
 import { client } from "@/sanity/lib/client";
-import ProductCard from "@/components/ProductCard";
+import { PRODUCTS_QUERYResult } from "@/sanity.types";
+
+// Internal absolute imports (@/)
 import Container from "@/components/Container";
 import Loading from "@/components/Loading";
+import ProductCard from "@/components/ProductCard";
 
 const DealsSection = () => {
   const [products, setProducts] = useState<PRODUCTS_QUERYResult>([]);
   const [loading, setLoading] = useState(false);
 
-  const query = `*[_type == "product"] | order(name asc)`;
-
   useEffect(() => {
+    const query = `*[_type == "product"] | order(name asc)`;
     const fetchData = async () => {
       setLoading(true);
       try {
@@ -30,7 +37,7 @@ const DealsSection = () => {
 
   return (
     <Container className="">
-      <h2 className="my-5 font-semibold text-xl underline underline-offset-4 decoration-[1px]">
+      <h2 className="my-5 font-semibold text-xl underline underline-offset-4 decoration-1">
         Get your best shopping deals with us
       </h2>
       {loading ? (

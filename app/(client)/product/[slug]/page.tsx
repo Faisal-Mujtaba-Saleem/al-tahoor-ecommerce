@@ -1,16 +1,21 @@
+// React & Next.js core
+import { notFound } from "next/navigation";
+import React from "react";
+
+// Third-party libraries
+import { Heart } from "lucide-react";
+import { FaRegQuestionCircle } from "react-icons/fa";
+import { FiShare2 } from "react-icons/fi";
+import { RxBorderSplit } from "react-icons/rx";
+import { TbTruckDelivery } from "react-icons/tb";
+
+// Internal absolute imports (@/)
 import AddToCartButton from "@/components/AddToCartButton";
 import Container from "@/components/Container";
 import ImageView from "@/components/new/ImageView";
 import PriceView from "@/components/PriceView";
 import ProductCharacteristics from "@/components/ProductCharacteristics";
 import { getProductBySlug } from "@/sanity/helpers";
-import { Heart } from "lucide-react";
-import { notFound } from "next/navigation";
-import React from "react";
-import { FaRegQuestionCircle } from "react-icons/fa";
-import { FiShare2 } from "react-icons/fi";
-import { RxBorderSplit } from "react-icons/rx";
-import { TbTruckDelivery } from "react-icons/tb";
 
 const ProductPage = async ({
   params,
@@ -59,7 +64,7 @@ const ProductPage = async ({
           <div className="flex flex-wrap items-center justify-between gap-2.5 border-b border-b-gray-200 py-5 -mt-2">
             <div className="flex items-center gap-2 text-sm text-black hover:text-red-600 hoverEffect">
               <RxBorderSplit className="text-lg" />
-              <p>Compare color</p>
+              <p>Compare products</p>
             </div>
             <div className="flex items-center gap-2 text-sm text-black hover:text-red-600 hoverEffect">
               <FaRegQuestionCircle className="text-lg" />

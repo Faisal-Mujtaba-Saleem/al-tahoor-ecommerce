@@ -13,10 +13,9 @@ const ProductGrid = () => {
   const [products, setProducts] = useState<PRODUCTS_QUERYResult>([]);
   const [loading, setLoading] = useState(false);
   const [selectedTab, setSelectedTab] = useState(productType[0]?.title || "");
-  const query = `*[_type == "product" && variant == $variant] | order(name asc)`;
-  const params = { variant: selectedTab.toLowerCase() };
-
   useEffect(() => {
+    const query = `*[_type == "product" && form == $form] | order(name asc)`;
+    const params = { form: selectedTab.toLowerCase() };
     const fetchData = async () => {
       setLoading(true);
       try {
@@ -36,7 +35,7 @@ const ProductGrid = () => {
       <HomeTabbar selectedTab={selectedTab} onTabSelect={setSelectedTab} />
       {loading ? (
         <div className="flex flex-col items-center justify-center py-10 min-h-80 space-y-4 text-center bg-gray-100 rounded-lg w-full mt-10">
-          <motion.div className="flex items-center space-x-2 text-blue-600">
+          <motion.div className="flex items-center space-x-2 text-primary">
             <Loader2 className="w-5 h-5 animate-spin" />
             <span>Product is loading...</span>
           </motion.div>

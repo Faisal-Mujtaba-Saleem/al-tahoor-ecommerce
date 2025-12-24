@@ -14,10 +14,9 @@ const Footer = () => {
         {/* Main footer content */}
         <div className="py-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           <div className="space-y-4">
-            <Logo>Tulos</Logo>
-            <p className="text-gray-600 text-sm">
-              Discover curated furniture collections at Tulos, blending style
-              and comfort to elevate your living spaces.
+            <Logo>Al-Tahoor</Logo>
+            <p className="text-gray-600 group-hover:text-darkColor hoverEffect text-sm leading-6">
+              Discover premium medicated soaps and healthcare essentials at Al-Tahoor, blending tradition with modern therapy.
             </p>
             <SocialMedia
               className="text-darkColor/60"
@@ -48,7 +47,7 @@ const Footer = () => {
               {categoriesData.map((item) => (
                 <li key={item?.title}>
                   <Link
-                    href={`/category${item?.href}`}
+                    href={`${item?.href === "/new" || item?.href === "/best-sellers" ? item?.href : `/category${item?.href}`}`}
                     className="text-gray-600 hover:text-gray-900 text-sm font-medium hoverEffect"
                   >
                     {item?.title}
@@ -58,7 +57,7 @@ const Footer = () => {
             </ul>
           </div>
 
-          <div>
+          {/* <div>
             <h3 className="font-semibold text-gray-900 mb-4">Newsletter</h3>
             <p className="text-gray-600 text-sm mb-4">
               Subscribe to our newsletter to receive updates and exclusive
@@ -78,12 +77,12 @@ const Footer = () => {
                 Subscribe
               </button>
             </form>
-          </div>
+          </div> */}
         </div>
 
         {/* Bottom copyright section */}
         <div className="py-6 border-t text-center text-sm text-gray-600">
-          <p>© {new Date().getFullYear()} Tulos. All rights reserved.</p>
+          <p>© <span suppressHydrationWarning>{new Date().getFullYear()}</span> Al-Tahoor. All rights reserved.</p>
         </div>
       </div>
     </footer>

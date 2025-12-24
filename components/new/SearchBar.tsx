@@ -102,7 +102,7 @@ const SearchBar = () => {
                       onClick={() => setShowSearch(false)}
                       className="h-20 w-20 md:h-24 md:w-24 flex-shrink-0 border border-darkColor/20 rounded-md overflow-hidden group"
                     >
-                      {product?.images && (
+                      {product?.images && product.images[0] && (
                         <Image
                           width={200}
                           height={200}
@@ -150,7 +150,7 @@ const SearchBar = () => {
                 ) : (
                   <p className="text-green-600 flex items-center justify-center gap-1">
                     <Search className="w-5 h-5" />
-                    Search and explore your products from Tulos.
+                    Search and explore your products from Al-Tahoor.
                   </p>
                 )}
               </div>

@@ -1,3 +1,4 @@
+// Third-party libraries
 import { TrolleyIcon } from "@sanity/icons";
 import { defineField, defineType } from "sanity";
 
@@ -77,19 +78,34 @@ export const productType = defineType({
       },
     }),
     defineField({
-      name: "variant",
-      title: "Product Type",
+      name: "form",
+      title: "Product Form",
       type: "string",
       options: {
         list: [
-          { title: "Tshirt", value: "tshirt" },
-          { title: "Jacket", value: "jacket" },
-          { title: "Pants", value: "pants" },
-          { title: "Hoodie", value: "hoodie" },
-          { title: "Short", value: "short" },
-          { title: "Others", value: "others" },
+          { title: "Solid", value: "solid" },
+          { title: "Liquid", value: "liquid" },
+          { title: "Cream", value: "cream" },
+          { title: "Oil", value: "oil" },
         ],
       },
+      validation: (Rule) => Rule.required(),
+    }),
+    defineField({
+      name: "usage",
+      title: "Usage Instructions",
+      type: "text",
+    }),
+    defineField({
+      name: "ingredients",
+      title: "Ingredients",
+      type: "text",
+    }),
+    defineField({
+      name: "isMedicated",
+      title: "Medicated Product",
+      type: "boolean",
+      initialValue: true,
     }),
   ],
   preview: {

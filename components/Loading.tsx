@@ -7,16 +7,23 @@ const Loading = () => {
   return (
     <div className="fixed min-h-screen w-full bg-white left-0 top-0 flex items-center justify-center">
       <div className="flex flex-col justify-center items-center gap-1">
-        <Logo>Tulos</Logo>
+        <Logo>Al-Tahoor</Logo>
         <motion.div
-          animate={{ scale: [1, 1.1, 1] }}
-          transition={{ repeat: Infinity, duration: 1.5 }}
-          className="flex items-center space-x-2 text-green-800"
+          animate={{
+            scale: [1, 1.1, 1],
+            opacity: [1, 0.5, 1],
+          }}
+          transition={{
+            duration: 1.5,
+            repeat: Infinity,
+            ease: "easeInOut",
+          }}
+          className="flex flex-col items-center justify-center gap-1"
         >
-          <Loader2 className="animate-spin" />
-          <span className="font-semibold tracking-wide">
-            Tulos is loading...
-          </span>
+          <div className="flex items-center space-x-2 text-blue-600">
+            <Loader2 className="w-5 h-5 animate-spin" />
+            <span className="font-medium text-lg">Al-Tahoor is loading...</span>
+          </div>
         </motion.div>
       </div>
     </div>

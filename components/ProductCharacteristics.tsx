@@ -12,34 +12,33 @@ const ProductCharacteristics = ({ product }: { product: Product }) => {
     <Accordion type="single" collapsible>
       <AccordionItem value="item-1">
         <AccordionTrigger className="font-bold">
-          {product?.name}: Characteristics
+          {product?.name}: Details
         </AccordionTrigger>
         <AccordionContent className="flex flex-col gap-1">
           <p className="flex items-center justify-between">
-            Brand: <span className="font-semibold tracking-wide">Unknown</span>
-          </p>
-          <p className="flex items-center justify-between">
-            Collection:{" "}
-            <span className="font-semibold tracking-wide">2024</span>
-          </p>
-          <p className="flex items-center justify-between">
-            Type:{" "}
-            <span className="font-semibold tracking-wide">
-              {product?.variant}
+            Form:{" "}
+            <span className="font-semibold tracking-wide capitalize">
+              {product?.form}
             </span>
           </p>
           <p className="flex items-center justify-between">
-            Stock:{" "}
+            Medicated:{" "}
             <span className="font-semibold tracking-wide">
-              {product?.stock ? "Available" : "Out of Stock"}
+              {product?.isMedicated ? "Yes" : "No"}
             </span>
           </p>
-          <p className="flex items-center justify-between">
-            Variant:{" "}
-            <span className="font-semibold tracking-wide">
-              {product?.intro}
-            </span>
-          </p>
+          <div className="flex flex-col gap-1 mt-2">
+            <span className="font-semibold">Usage Instructions:</span>
+            <p className="text-sm text-zinc-600 leading-relaxed">
+              {product?.usage}
+            </p>
+          </div>
+          <div className="flex flex-col gap-1 mt-2">
+            <span className="font-semibold">Ingredients:</span>
+            <p className="text-sm text-zinc-600 leading-relaxed">
+              {product?.ingredients}
+            </p>
+          </div>
         </AccordionContent>
       </AccordionItem>
     </Accordion>

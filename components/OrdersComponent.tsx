@@ -1,19 +1,27 @@
 "use client";
+
+// React & Next.js core
+import { useRouter } from "next/navigation";
 import React, { useCallback, useState } from "react";
-import { TableBody, TableCell, TableRow } from "./ui/table";
-import PriceFormatter from "./PriceFormatter";
+
+// Third-party libraries
+import { format } from "date-fns";
+import { Trash } from "lucide-react";
+import toast from "react-hot-toast";
+
+// SDKs (Sanity, Clerk, Google)
 import { MY_ORDERS_QUERYResult } from "@/sanity.types";
+
+// Internal absolute imports (@/)
 import OrderDetailsDialog from "./OrderDetailsDialog";
+import PriceFormatter from "./PriceFormatter";
+import { TableBody, TableCell, TableRow } from "./ui/table";
 import {
   Tooltip,
   TooltipContent,
   TooltipProvider,
   TooltipTrigger,
 } from "./ui/tooltip";
-import { format } from "date-fns";
-import { Trash } from "lucide-react";
-import { useRouter } from "next/navigation";
-import toast from "react-hot-toast";
 
 const OrdersComponent = ({ orders }: { orders: MY_ORDERS_QUERYResult }) => {
   const [isDeleting, setIsDeleting] = useState<string | null>(null);
@@ -109,11 +117,10 @@ const OrdersComponent = ({ orders }: { orders: MY_ORDERS_QUERYResult }) => {
                   <TableCell>
                     {order?.status && (
                       <span
-                        className={`px-2 py-1 rounded-full text-xs font-semibold ${
-                          order.status === "paid"
-                            ? "bg-green-100 text-green-800"
-                            : "bg-yellow-100 text-yellow-800"
-                        }`}
+                        className={`px-2 py-1 rounded-full text-xs font-semibold ${order.status === "paid"
+                          ? "bg-green-100 text-green-800"
+                          : "bg-yellow-100 text-yellow-800"
+                          }`}
                       >
                         {order?.status.charAt(0).toUpperCase() +
                           order?.status.slice(1)}
@@ -121,13 +128,7 @@ const OrdersComponent = ({ orders }: { orders: MY_ORDERS_QUERYResult }) => {
                     )}
                   </TableCell>
 
-                  <TableCell className="hidden sm:table-cell">
-                    {order?.invoice && (
-                      <p className="font-medium line-clamp-1">
-                        {order?.invoice ? order?.invoice?.number : "----"}
-                      </p>
-                    )}
-                  </TableCell>
+
                   <TableCell>
                     {/* Delete button */}
                     <button

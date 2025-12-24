@@ -102,7 +102,7 @@ export const getMyOrders = async (userId: string) => {
     throw new Error("User ID is required");
   }
   const MY_ORDERS_QUERY =
-    defineQuery(`*[_type == 'order' && clerkUserId == $userId] | order(orderData desc){
+    defineQuery(`*[_type == 'order' && clerkUserId == $userId] | order(orderDate desc){
     ...,products[]{
       ...,product->
     }
@@ -116,6 +116,36 @@ export const getMyOrders = async (userId: string) => {
     return orders?.data || [];
   } catch (error) {
     console.error("Error fetching orders:", error);
+    return [];
+  }
+};
+
+export const getNewArrivals = async () => {
+  const NEW_ARRIVALS_QUERY = defineQuery(
+    `*[_type == "product"] | order(_createdAt desc)`
+  );
+  try {
+    const products = await sanityFetch({
+      query: NEW_ARRIVALS_QUERY,
+    });
+    return products?.data || [];
+  } catch (error) {
+    console.error("Error fetching new arrivals:", error);
+    return [];
+  }
+};
+
+export const getBestSellers = async () => {
+  const BEST_SELLERS_QUERY = defineQuery(
+    `*[_type == "product" && status == "hot"] | order(name asc)`
+  );
+  try {
+    const products = await sanityFetch({
+      query: BEST_SELLERS_QUERY,
+    });
+    return products?.data || [];
+  } catch (error) {
+    console.error("Error fetching best sellers:", error);
     return [];
   }
 };

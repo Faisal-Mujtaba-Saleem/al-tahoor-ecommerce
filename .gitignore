@@ -1,6 +1,24 @@
-# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+# Professional Next.js + Sanity + Vercel .gitignore
 
-# dependencies
+# 🔐 Environment & Secrets (CRITICAL)
+# Never commit these. Use Vercel Environment Variables or GitHub Secrets instead.
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+*.env*
+# Google Service Account Keys
+*.json
+!package.json
+!tsconfig.json
+!components.json
+!.eslintrc.json
+# Sanity Data / Exports
+*.ndjson
+*.tar.gz
+
+# 📦 Dependencies
 /node_modules
 /.pnp
 .pnp.*
@@ -10,34 +28,46 @@
 !.yarn/releases
 !.yarn/versions
 
-# testing
-/coverage
-
-# next.js
+# 🏗️ Build & Cache
 /.next/
 /out/
-
-# production
 /build
+/dist
+/.turbo
+.cache
+*.tsbuildinfo
 
-# misc
-.DS_Store
-*.pem
-
-# debug
+# 📋 Logs
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+*.log
+logs
+*.syslog
 
-# env files (can opt-in for committing if needed)
-# .env*
-
-# vercel
+# 🚀 Vercel / Next.js
 .vercel
-
-# typescript
-*.tsbuildinfo
 next-env.d.ts
 
-# clerk configuration (can include secrets)
+# 🧪 Testing
+/coverage
+/.nyc_output
+/playwright-report
+/test-results
+
+# 💻 OS / Editor
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+*.swp
+*.swo
+.project
+.settings
+.classpath
+.factorypath
+
+# 🛠️ Tooling
 /.clerk/
+.npm
+.eslintcache

@@ -32,13 +32,13 @@ const NoProductAvailable = ({
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 0.2, duration: 0.5 }}
-        className="text-gray-600"
+        className="text-gray-600 px-4"
       >
-        We&apos;re sorry, but there are no products matching on{" "}
+        We&apos;re sorry, but there are no products in{" "}
         <span className="text-base font-semibold text-darkColor">
           {selectedTab}
         </span>{" "}
-        criteria at the moment.
+        at the moment.
       </motion.p>
 
       <motion.div

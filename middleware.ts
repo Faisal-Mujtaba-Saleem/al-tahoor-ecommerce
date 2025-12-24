@@ -10,6 +10,13 @@ const isProtectedRoute = createRouteMatcher([
 ]);
 
 export default clerkMiddleware(async (auth, req) => {
+  const { pathname } = req.nextUrl;
+  console.log("Middleware Request:", pathname);
+
+  if (pathname.startsWith("/api/webhooks/sanity")) {
+    return NextResponse.next();
+  }
+
   const authObject = await auth();
 
   if (isProtectedRoute(req) && !authObject.userId) {

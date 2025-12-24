@@ -1,5 +1,6 @@
 import { backendClient } from "@/sanity/lib/backendClient";
 import { NextRequest, NextResponse } from "next/server";
+import { deleteOrderFromSheet } from "@/lib/googleSheets";
 
 export async function POST(req: NextRequest) {
   try {
@@ -16,6 +17,9 @@ export async function POST(req: NextRequest) {
 
     // Delete the order from Sanity
     await backendClient.delete(orderId);
+
+    // Also delete from Google Sheet to ensure sync
+    await deleteOrderFromSheet(orderId);
 
     return NextResponse.json({ message: "Order deleted successfully" });
   } catch (error) {

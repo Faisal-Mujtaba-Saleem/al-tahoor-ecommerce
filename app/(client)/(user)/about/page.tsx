@@ -4,23 +4,21 @@ const AboutPage = () => {
   return (
     <div className="">
       <Container className="max-w-6xl lg:px-8 py-12">
-        <h1 className="text-3xl font-bold mb-6">About Tulos</h1>
+        <h1 className="text-3xl font-bold mb-6">About Al-Tahoor</h1>
         <p className="mb-4">
-          Tulos is a cutting-edge technology company dedicated to providing
-          innovative solutions for modern businesses. Founded in 2020,
-          we&apos;ve quickly established ourselves as a leader in digital
-          transformation and software development.
+          Al-Tahoor is a premium healthcare and personal care company dedicated to providing
+          high-quality medicated solutions for modern skin and hair needs. Founded in 2020,
+          we&apos;ve quickly established ourselves as a trusted name in therapeutic personal care.
         </p>
         <p className="mb-4">
-          Our team of expert developers, designers, and strategists work
-          tirelessly to create custom solutions that help our clients streamline
-          their operations, increase efficiency, and drive growth.
+          Our mission is to empower individuals with products that truly work,
+          helping them achieve healthier skin and hair through science-backed ingredients.
         </p>
         <p>
-          At Tulos, we believe in the power of technology to transform
-          businesses and improve lives. We&apos;re committed to staying at the
-          forefront of technological advancements and delivering exceptional
-          value to our clients.
+          At Al-Tahoor, we believe in the power of nature and science to transform
+          your personal care routine. We&apos;re committed to staying at the
+          forefront of dermatological advancements and delivering exceptional
+          value to our customers.
         </p>
       </Container>
     </div>
