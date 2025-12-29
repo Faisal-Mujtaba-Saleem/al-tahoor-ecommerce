@@ -2,20 +2,20 @@
 import { notFound } from "next/navigation";
 import React from "react";
 
-// Third-party libraries
-import { Heart } from "lucide-react";
-import { FaRegQuestionCircle } from "react-icons/fa";
-import { FiShare2 } from "react-icons/fi";
-import { RxBorderSplit } from "react-icons/rx";
-import { TbTruckDelivery } from "react-icons/tb";
-
 // Internal absolute imports (@/)
 import AddToCartButton from "@/components/AddToCartButton";
+import AddToWishlistButton from "@/components/AddToWishlistButton";
+import AskQuestionButton from "@/components/AskQuestionButton";
+import CompareButton from "@/components/CompareButton";
 import Container from "@/components/Container";
+import DeliveryReturnButton from "@/components/DeliveryReturnButton";
 import ImageView from "@/components/new/ImageView";
 import PriceView from "@/components/PriceView";
 import ProductCharacteristics from "@/components/ProductCharacteristics";
+import ShareButton from "@/components/ShareButton";
+import ProductQA from "@/components/ProductQA";
 import { getProductBySlug } from "@/sanity/helpers";
+import { getQuestionsByProductId } from "@/app/actions/productActions";
 
 const ProductPage = async ({
   params,
@@ -28,6 +28,8 @@ const ProductPage = async ({
   if (!product) {
     return notFound();
   }
+
+  const questions = await getQuestionsByProductId(product._id);
 
   return (
     <div>
@@ -56,28 +58,17 @@ const ProductPage = async ({
               product={product}
               className="bg-darkColor/80 text-white hover:bg-darkColor hoverEffect"
             />
-            <button className="border-2 border-darkColor/30 text-darkColor/60 px-2.5 py-1.5 rounded-md hover:text-darkColor hover:border-darkColor hoverEffect">
-              <Heart className="w-5 h-5" />
-            </button>
+            <AddToWishlistButton
+              product={product}
+              className="border-2 border-darkColor/30 text-darkColor/60 px-2.5 py-1.5 rounded-md hover:text-darkColor hover:border-darkColor hoverEffect"
+            />
           </div>
           <ProductCharacteristics product={product} />
           <div className="flex flex-wrap items-center justify-between gap-2.5 border-b border-b-gray-200 py-5 -mt-2">
-            <div className="flex items-center gap-2 text-sm text-black hover:text-red-600 hoverEffect">
-              <RxBorderSplit className="text-lg" />
-              <p>Compare products</p>
-            </div>
-            <div className="flex items-center gap-2 text-sm text-black hover:text-red-600 hoverEffect">
-              <FaRegQuestionCircle className="text-lg" />
-              <p>Ask a question</p>
-            </div>
-            <div className="flex items-center gap-2 text-sm text-black hover:text-red-600 hoverEffect">
-              <TbTruckDelivery className="text-lg" />
-              <p>Delivery & Return</p>
-            </div>
-            <div className="flex items-center gap-2 text-sm text-black hover:text-red-600 hoverEffect">
-              <FiShare2 className="text-lg" />
-              <p>Share</p>
-            </div>
+            <CompareButton product={product} />
+            <AskQuestionButton product={product} />
+            <DeliveryReturnButton />
+            <ShareButton product={product} />
           </div>
           <div className="flex flex-wrap items-center gap-5">
             <div className="border border-darkBlue/20 text-center p-3 hover:border-darkBlue hoverEffect rounded-md">
@@ -90,14 +81,17 @@ const ProductPage = async ({
             </div>
             <div className="border border-darkBlue/20 text-center p-3 hover:border-darkBlue hoverEffect rounded-md">
               <p className="text-base font-semibold text-black">
-                Flexible Payment
+                100% Authentic
               </p>
               <p className="text-sm text-gray-500">
-                Pay with Multiple Credit Cards
+                Guaranteed genuine brand products
               </p>
             </div>
           </div>
         </div>
+      </Container>
+      <Container>
+        <ProductQA questions={questions} />
       </Container>
     </div>
   );

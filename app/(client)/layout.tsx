@@ -14,6 +14,7 @@ import DisableDraftMode from "@/components/DisableDraftMode";
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
 import ChatIcon from "@/components/new/ChatIcon";
+import CompareFloatingBar from "@/components/CompareFloatingBar";
 
 export const metadata: Metadata = {
   title: "Al-Tahoor healthcare",
@@ -47,6 +48,7 @@ export default async function RootLayout({
       />
       <SanityLive />
       <ChatIcon />
+      <CompareFloatingBar />
     </div>
   );
 }

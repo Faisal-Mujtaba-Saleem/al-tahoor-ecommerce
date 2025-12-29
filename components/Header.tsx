@@ -12,6 +12,7 @@ import { auth } from "@clerk/nextjs/server";
 import { getAllCategories, getMyOrders } from "@/sanity/helpers";
 import Container from "./Container";
 import CartIcon from "./new/CartIcon";
+import CompareIcon from "./new/CompareIcon";
 import HeaderMenu from "./new/HeaderMenu";
 import Logo from "./new/Logo";
 import MobileMenu from "./new/MobileMenu";
@@ -37,6 +38,7 @@ const Header = async () => {
         </div>
         <div className="w-auto md:w-1/3 flex items-center justify-end gap-5">
           <SearchBar />
+          <CompareIcon />
           <WishlistIcon />
           <CartIcon />
           {userId && (

@@ -27,6 +27,7 @@
     "@sanity/preview-url-secret": "^2.1.10",
     "@sanity/vision": "3",
     "@sanity/webhook": "^4.0.4",
+    "@tailwindcss/typography": "^0.5.19",
     "@types/lodash": "^4.17.16",
     "@types/nodemailer": "^7.0.4",
     "class-variance-authority": "^0.7.1",
